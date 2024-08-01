@@ -23,10 +23,10 @@
         // const time = new Date().toLocaleTimeString();
         const [time, setTime] = React.useState(new Date().toLocaleTimeString());
 
-        React.useEffect(function () {
-          setInterval(function () {
+        React.useEffect(() => {
+          setInterval(() => {
             setTime(new Date().toLocaleTimeString());
-          }, 1000);
+          }, 10);
         }, []);
 
         return React.createElement("header", null, `Hello React! It's ${time}`);
