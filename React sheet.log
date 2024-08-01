@@ -1,0 +1,19 @@
+React docs:
+1.JS frameworks exists because, it helps in keeping a UI in sync with the data, which otherwise is really a tough job to do and is mostly done manually in vanilla JS with the help of DOM manipulation. These frameworks enforce a correct and consistent way of structuring and writing code. They give devs and team a consistentway of building web applications.
+Called web apps instead of web pages becasuse, unlike previous times these are enedered on the client side.
+
+2.React is a JS library for building UI. popular declarative,component based, state-driven,JS library, created by FB. React reacts to state/Data changes by re rendering the UI
+
+3.React.createElement(html element, props, children of the element)
+4. To style an element we need to use double curly braces in JSX. <h1 style={{ color: "red" }}, Also style properties are converted to camel case 
+instead of a dashed notation in JSX. eg. font-size in JS.. becomes fontSize in JSX
+5. In JSX we cant use class.. instead we need to use className ..eg <div className ="container">
+6. When you use {} bracket then you enter javascript mode
+7. Props are used to pass down data from parent component to child component. Used basically for configuration and customisation. Can pass down
+any object, array, function, even other componnets.
+8. State is internal data that can be updated by components logic. Props are external data coming from outside and can only be updated by parent component adn not the child component. Props are immutable. We have one way data flow in React from parent to child bcz it is performance efficient and makes the applications easy to debug.
+9. React does not show true or false value on screen
+10. React.Fragments lets us group elements for returning inside one JSX.  can be also written as pair of empty angle brackets <> . If we need to use any key, then we we use the long form.. <React.Fragments> 
+11. in JSX we write browser events with camel casing .. ex. onClick... onKeyUp.. etc
+12. useState can be called only on the top level in a function and not inside an if block or loop etc.... State can only be updated with the help of the setter functions provided by them. So state should always be treated as immutable. In every render the component is rendered again and again , but the state remains constant. State only disappears when the whole component is unmounted or removed.
+13. We need to use callback for updating the state in setState((s)=>{s+1})..
