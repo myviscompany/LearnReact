@@ -17,3 +17,9 @@ any object, array, function, even other componnets.
 11. in JSX we write browser events with camel casing .. ex. onClick... onKeyUp.. etc
 12. useState can be called only on the top level in a function and not inside an if block or loop etc.... State can only be updated with the help of the setter functions provided by them. So state should always be treated as immutable. In every render the component is rendered again and again , but the state remains constant. State only disappears when the whole component is unmounted or removed.
 13. We need to use callback for updating the state in setState((s)=>{s+1})..
+14. We use controlled elements where we maintain the state of the elemennts in the react app itself and not inside the DOM
+15. event.target.value alwyas returns a string , so if u are using a state for numbers you need to explicitly convert it into number use Number funcn.
+16. In an object if you dont provide key value pairs, and use the variable name, then it generates key value pairs with same name and value of the variable
+17. State is internal data, props is external. State can be updated by comp itself, whereas props is just readonly. Updating both of them can sause re rendering
+18, Local state -- only needed by the component and the child components, Global state-- accessible by every component in the app. Whenever multiple components needs the same piece of state, we move that state to the first parent of both the sibling components who need that state. This is called lifting the state up.
+19. When we pass a function on abrowser event... ex onClick={clickHandler}.... then this clickHandler funcn will recieve an event, but if lets say this clickHandler function wants to receive some parameter, lets say some Id... then we need to write with  the help of callback methods..ex onClick={() =>clickHandler(SomeObject.id)}

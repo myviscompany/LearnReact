@@ -1,5 +1,9 @@
 import { React, useState } from "react";
 import ReactDOM from "react-dom/client";
+import Logo from "./PackingComponents/Logo";
+import Form from "./PackingComponents/Form";
+import PackingList from "./PackingComponents/PackingList";
+import Stats from "./PackingComponents/Stats";
 //import App from "./App";
 import "./index.css";
 
@@ -198,61 +202,51 @@ function App() {
 Step App ends here------------------------------------*/
 const initialItems = [
   { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
-  { id: 2, description: "Charger", quantity: 12, packed: false },
-  { id: 2, description: "Trimmer", quantity: 12, packed: false },
-  { id: 2, description: "Cream", quantity: 12, packed: true },
+  { id: 3, description: "Socks", quantity: 12, packed: false },
+  { id: 4, description: "Charger", quantity: 12, packed: false },
+  { id: 5, description: "Trimmer", quantity: 12, packed: false },
+  { id: 6, description: "Cream", quantity: 12, packed: true },
 ];
 
 function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+
+  function handleDeleteItem(id) {
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  }
+  function handleClearList() {
+    const confirmed = window.confirm(
+      "DO you really wish to delete all items ?"
+    );
+    if (confirmed) setItems([]);
+  }
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
-      <Stats />
-    </div>
-  );
-}
-function Logo() {
-  return <h1>Far away🌴</h1>;
-}
-function Form() {
-  return (
-    <div className="add-form">
-      <h3>What do you need for your trip ? 😎</h3>
-    </div>
-  );
-}
-function PackingList() {
-  return (
-    <div className="list">
-      <ul>
-        {initialItems.map((item) => (
-          <Item item={item} />
-        ))}
-      </ul>
+      <Form onAddItem={handleAddItems} />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItems={handleToggleItem}
+        onClearItems={handleClearList}
+      />
+      <Stats items={items} />
     </div>
   );
 }
 
-function Item({ item }) {
-  return (
-    <li>
-      <span style={item.packed ? {} : { textDecoration: "line-Through" }}>
-        {item.quantity} {item.description}
-      </span>
-      <span>❌</span>
-    </li>
-  );
-}
-function Stats() {
-  return (
-    <footer className="stats">
-      <em>💼 You have items on your list and you already packed X%</em>
-    </footer>
-  );
-}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   //<React.StrictMode>
